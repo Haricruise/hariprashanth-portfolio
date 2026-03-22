@@ -3,186 +3,641 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P. Hari Prashanth | Accounts & Finance Professional</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>P. Hari Prashanth — Finance Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+  :root {
+    --navy:     #0D2137;
+    --blue:     #1A5276;
+    --accent:   #1F6FAB;
+    --gold:     #C9A84C;
+    --gold-lt:  #F0D98A;
+    --white:    #FFFFFF;
+    --off:      #F7F5F0;
+    --gray:     #8B8680;
+    --dark:     #1C1C1C;
+    --rule:     rgba(201,168,76,0.35);
+    --ease:     cubic-bezier(0.22,1,0.36,1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-body {
-    background: #f4f6f9;
-    color: #333;
-}
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
 
-header {
-    background: #1f3c88;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-}
+  /* ── SCROLL PROGRESS ── */
+  #progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--accent));
+    width: 0%; z-index: 999; transition: width 0.1s linear;
+  }
 
-header h1 {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 60px;
+    background: rgba(13,33,55,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--white); letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.7);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-dl {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 8px 20px;
+    border: 1px solid var(--gold); color: var(--gold);
+    text-decoration: none; border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .nav-dl:hover { background: var(--gold); color: var(--navy); }
 
-header p {
-    font-size: 18px;
-}
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 100px 0 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(26,82,118,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.08) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(var(--gold) 1px, transparent 1px),
+      linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: 1100px; margin: 0 auto; padding: 0 48px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 58px); font-weight: 700; line-height: 1.1;
+    color: var(--white); margin-bottom: 10px;
+  }
+  .hero h1 .last { color: var(--gold); display: block; }
+  .hero-role {
+    font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.6);
+    letter-spacing: 0.04em; margin-bottom: 32px; line-height: 1.6;
+  }
+  .hero-contact { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+  .hero-contact a {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; color: rgba(255,255,255,0.65);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .hero-contact a:hover { color: var(--gold); }
+  .hero-contact .ico {
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .hero-contact a:hover .ico { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 13px 28px; background: var(--gold); color: var(--navy);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    border-radius: 2px; transition: all 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+  .btn-secondary {
+    padding: 13px 28px; border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+    border-radius: 2px; transition: all 0.2s; display: inline-block;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
 
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px 0;
-}
+  /* Hero right — stats */
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-card {
+    padding: 24px 20px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px; background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(4px);
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.6s var(--ease) forwards;
+  }
+  .stat-card:nth-child(1) { animation-delay: 0.2s; }
+  .stat-card:nth-child(2) { animation-delay: 0.35s; }
+  .stat-card:nth-child(3) { animation-delay: 0.5s; }
+  .stat-card:nth-child(4) { animation-delay: 0.65s; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700; color: var(--gold);
+    line-height: 1; margin-bottom: 6px;
+  }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; line-height: 1.4; }
 
-section {
-    margin-bottom: 40px;
-}
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-h2 {
-    color: #1f3c88;
-    margin-bottom: 20px;
-    border-bottom: 3px solid #1f3c88;
-    display: inline-block;
-    padding-bottom: 5px;
-}
+  /* ── MAIN WRAPPER ── */
+  main { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
 
-.card {
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.05);
-}
+  /* ── SECTION ── */
+  section { padding: 80px 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
+  section:last-child { border-bottom: none; }
 
-ul {
-    margin-left: 20px;
-}
+  .sec-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 8px; display: flex; align-items: center; gap: 10px;
+  }
+  .sec-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px; font-weight: 600; color: var(--navy);
+    margin-bottom: 48px; line-height: 1.2;
+  }
 
-.skills span {
-    display: inline-block;
-    background: #1f3c88;
-    color: white;
-    padding: 8px 12px;
-    margin: 5px;
-    border-radius: 20px;
-    font-size: 14px;
-}
+  /* ── SUMMARY ── */
+  .summary-text {
+    font-size: 16px; font-weight: 300; line-height: 1.85;
+    color: #3D3D3D; max-width: 780px;
+    border-left: 3px solid var(--gold);
+    padding-left: 28px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+  .tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 6px 14px;
+    border: 1px solid rgba(26,82,118,0.25);
+    border-radius: 2px; color: var(--accent);
+    background: rgba(26,82,118,0.04);
+  }
 
-footer {
-    background: #1f3c88;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
+  /* ── EXPERIENCE ── */
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 0 48px; margin-bottom: 56px; position: relative;
+  }
+  .exp-item::before {
+    content: ''; position: absolute;
+    left: 200px; top: 0; bottom: -56px; width: 1px;
+    background: linear-gradient(to bottom, var(--rule) 0%, transparent 100%);
+  }
+  .exp-item:last-child::before { display: none; }
+  .exp-left { padding-right: 0; padding-top: 4px; }
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--gray);
+    letter-spacing: 0.05em; line-height: 1.6; margin-bottom: 8px;
+  }
+  .exp-company {
+    font-size: 13px; font-weight: 500; color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .exp-loc { font-size: 11px; color: var(--gray); }
+  .exp-right { padding-left: 48px; }
+  .exp-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .exp-sub {
+    font-size: 12px; color: var(--gray); margin-bottom: 20px;
+    font-style: italic;
+  }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .exp-bullets li {
+    font-size: 13.5px; font-weight: 400; color: #3D3D3D;
+    line-height: 1.65; padding-left: 18px; position: relative;
+  }
+  .exp-bullets li::before {
+    content: '▸'; position: absolute; left: 0;
+    color: var(--gold); font-size: 10px; top: 4px;
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .skill-card {
+    padding: 28px 24px;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-top: 3px solid var(--gold);
+    border-radius: 0 0 4px 4px;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+  .skill-card-title {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--navy); margin-bottom: 16px;
+  }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill {
+    font-size: 11px; padding: 4px 10px; border-radius: 2px;
+    background: rgba(13,33,55,0.06); color: var(--blue);
+    font-weight: 500;
+  }
+
+  /* ── EDUCATION / CERTS ── */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .edu-item {
+    padding: 28px; background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07); border-radius: 4px;
+    transition: box-shadow 0.2s;
+  }
+  .edu-item:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.07); }
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 4px;
+  }
+  .edu-school { font-size: 13px; color: var(--accent); margin-bottom: 4px; }
+  .edu-year { font-size: 11px; color: var(--gray); font-family: 'DM Mono', monospace; }
+  .edu-badge {
+    display: inline-block; margin-top: 10px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 4px 10px;
+    background: rgba(201,168,76,0.12); color: #9A7322; border-radius: 2px;
+  }
+  .cert-list { display: flex; flex-direction: column; gap: 12px; }
+  .cert-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 16px 20px; background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07); border-radius: 4px;
+  }
+  .cert-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 5px;
+  }
+  .cert-text { font-size: 13px; color: #3D3D3D; line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 40px 48px;
+    font-size: 12px; letter-spacing: 0.05em;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  footer strong { color: var(--gold); }
+
+  /* ── FADE-IN ON SCROLL ── */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 20px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    main { padding: 0 20px; }
+    .exp-item { grid-template-columns: 1fr; }
+    .exp-item::before { display: none; }
+    .exp-right { padding-left: 0; margin-top: 12px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
-
 <body>
 
-<header>
-    <h1>P. Hari Prashanth</h1>
-    <p>Lead – Accounts & Finance | 8+ Years Experience</p>
-    <p>Chennai, Tamil Nadu | 📞 +91 9500187747 | 📧 prashanthcut77@gmail.com</p>
-</header>
+<div id="progress"></div>
 
-<div class="container">
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">H<span>P</span></div>
+  <ul class="nav-links">
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+  <a class="nav-dl" href="Hari_Prashanth_Resume.pdf" download>Download CV</a>
+</nav>
 
-<section>
-<h2>Professional Summary</h2>
-<div class="card">
-Finance professional with 7+ years of experience in accounting, financial operations, taxation, audit, and compliance. Skilled in budgeting, forecasting, financial reporting, and ERP implementation. Proven leadership in managing finance teams and ensuring statutory compliance.
-</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Finance Professional</div>
+      <h1>P. Hari <span class="last">Prashanth</span></h1>
+      <p class="hero-role">
+        Lead Accounts &amp; Finance · Corporate Finance Specialist<br>
+        8+ Years · Chennai, Tamil Nadu
+      </p>
+      <div class="hero-contact">
+        <a href="tel:+919500187747">
+          <span class="ico">📞</span> +91 9500187747
+        </a>
+        <a href="mailto:prashanthcut77@gmail.com">
+          <span class="ico">✉️</span> prashanthcut77@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/hariprashanth-finance" target="_blank">
+          <span class="ico">🔗</span> linkedin.com/in/hariprashanth-finance
+        </a>
+        <a href="https://haricruise.github.io/hariprashanthportfolio/" target="_blank">
+          <span class="ico">🌐</span> haricruise.github.io/hariprashanthportfolio
+        </a>
+      </div>
+      <div class="hero-btns">
+        <a class="btn-primary" href="Hari_Prashanth_Resume.pdf" download>Download Resume</a>
+        <a class="btn-secondary" href="mailto:prashanthcut77@gmail.com">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Years of Finance Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Companies Across Sectors</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">250+</div>
+        <div class="stat-label">Employees Payroll Managed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Default in GST/TDS Filings</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-<h2>Professional Experience</h2>
+<main>
 
-<div class="card">
-<h3>Zocket Technologies Pvt Ltd – Lead Accounts & Finance</h3>
-<p><strong>May 2022 – Present</strong></p>
-<ul>
-<li>Lead daily accounting operations and month-end reporting</li>
-<li>Manage GST, TDS, Payroll & statutory compliance</li>
-<li>Prepare MIS reports & executive dashboards</li>
-<li>Handle budgeting & forecasting initiatives</li>
-<li>Coordinate internal & external audits</li>
-<li>ERP & automation implementation</li>
-</ul>
-</div>
+  <!-- SUMMARY -->
+  <section id="summary" class="reveal">
+    <div class="sec-label">About Me</div>
+    <h2 class="sec-title">Professional Summary</h2>
+    <p class="summary-text">
+      Finance professional with <strong>8+ years of progressive experience</strong> across accounting, taxation,
+      compliance, and financial reporting — spanning tech startups, real estate, and financial consulting
+      sectors in Chennai. Proven track record managing end-to-end finance functions including GST/TDS
+      compliance, payroll processing, FP&amp;A, MIS reporting, budgeting &amp; forecasting, and audit coordination.
+      Experienced in <strong>Indian GAAP, US GAAP alignment</strong>, ERP automation, and team leadership.
+      Currently pursuing <strong>CMA (ICMAI)</strong> for advanced cost management expertise.
+    </p>
+    <div class="tags">
+      <span class="tag">GST Compliance</span>
+      <span class="tag">TDS Filing</span>
+      <span class="tag">FP&amp;A</span>
+      <span class="tag">MIS Reporting</span>
+      <span class="tag">Indian GAAP</span>
+      <span class="tag">US GAAP</span>
+      <span class="tag">Tally ERP</span>
+      <span class="tag">SAP FI-CO</span>
+      <span class="tag">Budgeting</span>
+      <span class="tag">Internal Audit</span>
+      <span class="tag">Payroll Management</span>
+      <span class="tag">CMA Pursuing</span>
+    </div>
+  </section>
 
-<div class="card">
-<h3>Bharathi Homes and Realtors Pvt Ltd – Executive Accounts</h3>
-<p><strong>Mar 2021 – Mar 2022</strong></p>
-<ul>
-<li>Bookkeeping, payroll & statutory filings</li>
-<li>Financial reporting & budgeting support</li>
-<li>GSTR-2A reconciliation & audits</li>
-</ul>
-</div>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-label">Career History</div>
+    <h2 class="sec-title">Professional Experience</h2>
 
-<div class="card">
-<h3>Rajeswari Financial Consultants – Accountant</h3>
-<p><strong>Nov 2018 – Feb 2021</strong></p>
-<ul>
-<li>GST, TDS & Income Tax filings</li>
-<li>Internal & stock audits</li>
-<li>Client compliance coordination</li>
-</ul>
-</div>
+    <!-- Zocket -->
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-period">Jan 2025 – Mar 2026<br>May 2022 – Dec 2024</div>
+        <div class="exp-company">Zocket Technologies Pvt Ltd</div>
+        <div class="exp-loc">Chennai</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Lead – Accounts &amp; Finance</div>
+        <div class="exp-sub">Previously: Senior Accounts &amp; Finance (May 2022 – Mar 2026)</div>
+        <ul class="exp-bullets">
+          <li>Managed end-to-end GST compliance — GSTR-1, GSTR-3B, GSTR-9, GSTR-2A reconciliation — maintaining a <strong>zero-default filing</strong> track record</li>
+          <li>Handled complete TDS lifecycle: monthly calculations, deductions, payments &amp; return filings (Form 24Q, 26Q) per Income Tax Act</li>
+          <li>Processed full-cycle payroll for <strong>100+ employees</strong> including salary structuring, PF, ESIC, PT deductions, reimbursements &amp; Form 16</li>
+          <li>Prepared monthly MIS reports, financial dashboards &amp; variance analysis reports for C-suite and executive decision-making</li>
+          <li>Led annual budgeting and quarterly forecasting; tracked budget vs. actuals and reported variances with corrective action plans</li>
+          <li>Maintained books of accounts under <strong>Indian GAAP</strong>; supported US GAAP alignment for international finance reporting requirements</li>
+          <li>Performed <strong>Financial Planning &amp; Analysis (FP&amp;A)</strong> — revenue forecasting, cost analysis, profitability tracking &amp; scenario modelling</li>
+          <li>Coordinated internal &amp; external audits end-to-end; prepared audit schedules and finalised books for statutory &amp; tax compliance</li>
+          <li>Managed accounts payable &amp; receivable; monitored aging reports to ensure healthy cash flow and timely vendor settlements</li>
+          <li>Championed ERP &amp; automation initiatives across Tally ERP 9 &amp; Prime, Zoho Books, and Concur — reducing manual effort significantly</li>
+          <li>Supervised and mentored accounts team; delegated tasks and ensured timely monthly financial closure</li>
+        </ul>
+      </div>
+    </div>
 
-</section>
+    <!-- Bharathi Homes -->
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-period">Mar 2021 – Mar 2022</div>
+        <div class="exp-company">Bharathi Homes &amp; Realtors Pvt Ltd</div>
+        <div class="exp-loc">Chennai</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Executive – Accounts</div>
+        <ul class="exp-bullets">
+          <li>Managed complete bookkeeping, payroll, and statutory filings (ESI, PF, GST, TDS) for a real estate company</li>
+          <li>Prepared monthly and annual financial reports; supported budgeting and cash flow planning processes</li>
+          <li>Conducted internal audits and GSTR-2A reconciliation; ensured timely regulatory compliance</li>
+        </ul>
+      </div>
+    </div>
 
-<section>
-<h2>Core Competencies</h2>
-<div class="skills">
-<span>Financial Reporting</span>
-<span>GST & TDS</span>
-<span>Budgeting & Forecasting</span>
-<span>Internal Audit</span>
-<span>Team Leadership</span>
-<span>ERP Implementation</span>
-<span>MIS Reporting</span>
-<span>Tax Compliance</span>
-</div>
-</section>
+    <!-- Rajeswari -->
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-period">Nov 2018 – Feb 2021</div>
+        <div class="exp-company">Rajeswari Financial Consultants</div>
+        <div class="exp-loc">Adyar, Chennai</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Accountant &amp; Finance Executive</div>
+        <ul class="exp-bullets">
+          <li>Handled multi-client accounts: GST/TDS filings, income tax preparation, GSTR-9, stock audits &amp; financial statements</li>
+          <li>Coordinated with clients to resolve discrepancies, reconcile accounts and ensure full compliance documentation</li>
+        </ul>
+      </div>
+    </div>
 
-<section>
-<h2>Education</h2>
-<div class="card">
-<ul>
-<li>MBA (Finance) – Annamalai University (2022)</li>
-<li>B.Com – D.G. Vaishnav College (2018)</li>
-<li>CMA (Inter) – Pursuing</li>
-</ul>
-</div>
-</section>
+    <!-- Suresh -->
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-period">May 2018 – Oct 2018</div>
+        <div class="exp-company">Suresh Tax Consultancy</div>
+        <div class="exp-loc">Chennai</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Audit Assistant</div>
+        <ul class="exp-bullets">
+          <li>Assisted in GST/TDS filings, PF/ESIC calculations, provisional balance sheets, client audits &amp; monthly bookkeeping</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<section>
-<h2>Technical Skills</h2>
-<div class="card">
-<ul>
-<li>Tally ERP 9 & Prime</li>
-<li>Zoho Books</li>
-<li>SAP</li>
-<li>Concur</li>
-<li>Microsoft Excel (Advanced)</li>
-<li>Financial Data Analysis</li>
-</ul>
-</div>
-</section>
+  <!-- SKILLS -->
+  <section id="skills" class="reveal">
+    <div class="sec-label">Expertise</div>
+    <h2 class="sec-title">Core Competencies</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title">Taxation &amp; Compliance</div>
+        <div class="skill-pills">
+          <span class="pill">GST (GSTR-1/3B/9/2A)</span>
+          <span class="pill">TDS Filing</span>
+          <span class="pill">Income Tax</span>
+          <span class="pill">PF &amp; ESIC</span>
+          <span class="pill">Statutory Compliance</span>
+          <span class="pill">Form 24Q / 26Q</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Financial Management</div>
+        <div class="skill-pills">
+          <span class="pill">Financial Reporting</span>
+          <span class="pill">MIS &amp; Dashboards</span>
+          <span class="pill">Budgeting &amp; Forecasting</span>
+          <span class="pill">Variance Analysis</span>
+          <span class="pill">FP&amp;A</span>
+          <span class="pill">Cash Flow Management</span>
+          <span class="pill">Accounts Finalization</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Accounting Standards</div>
+        <div class="skill-pills">
+          <span class="pill">Indian GAAP</span>
+          <span class="pill">US GAAP Alignment</span>
+          <span class="pill">Cost Management</span>
+          <span class="pill">CMA (Pursuing)</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Audit &amp; Controls</div>
+        <div class="skill-pills">
+          <span class="pill">Internal Audit</span>
+          <span class="pill">External Audit</span>
+          <span class="pill">SOX-aligned Controls</span>
+          <span class="pill">AP / AR Management</span>
+          <span class="pill">Bank Reconciliation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">ERP &amp; Software</div>
+        <div class="skill-pills">
+          <span class="pill">Tally ERP 9 &amp; Prime</span>
+          <span class="pill">SAP FI-CO</span>
+          <span class="pill">Zoho Books</span>
+          <span class="pill">Concur</span>
+          <span class="pill">Micromen</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Tools &amp; Analytics</div>
+        <div class="skill-pills">
+          <span class="pill">MS Excel (Advanced)</span>
+          <span class="pill">PowerPoint</span>
+          <span class="pill">Word</span>
+          <span class="pill">Business Intelligence</span>
+          <span class="pill">Data Management</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <!-- EDUCATION -->
+  <section id="education" class="reveal">
+    <div class="sec-label">Qualifications</div>
+    <h2 class="sec-title">Education &amp; Certifications</h2>
+    <div class="edu-grid" style="margin-bottom:40px">
+      <div class="edu-item">
+        <div class="edu-degree">CMA (Inter) – ICMAI</div>
+        <div class="edu-school">Institute of Cost Accountants of India</div>
+        <div class="edu-year">December 2022 — Present</div>
+        <span class="edu-badge">Currently Pursuing</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">MBA – Finance</div>
+        <div class="edu-school">Annamalai University</div>
+        <div class="edu-year">2020 – 2022</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">B.Com – Accounting &amp; Finance</div>
+        <div class="edu-school">D.G. Vaishnav College, Chennai</div>
+        <div class="edu-year">2015 – 2018</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">Higher Secondary (HSC)</div>
+        <div class="edu-school">Railway Mixed Higher Secondary School, Chennai</div>
+        <div class="edu-year">2015</div>
+      </div>
+    </div>
 
+    <div class="sec-label" style="margin-bottom:24px">Certifications</div>
+    <div class="cert-list">
+      <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">Microsoft Office Intermediate Program — Word, Excel &amp; PowerPoint</div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">SAP Finance &amp; Controlling (FI-CO) — Power Users Course</div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">E-Filing: Income Tax, GST &amp; TDS Registration</div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">Registration of ESIC, EPFO &amp; Digital Signature Certificate (DSC)</div></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
 <footer>
-© 2026 P. Hari Prashanth | Accounts & Finance Professional | Chennai
+  <strong>P. Hari Prashanth</strong> &nbsp;·&nbsp;
+  +91 9500187747 &nbsp;·&nbsp;
+  prashanthcut77@gmail.com &nbsp;·&nbsp;
+  Chennai, Tamil Nadu, India<br><br>
+  &copy; 2025 P. Hari Prashanth. Built for GitHub Pages.
 </footer>
 
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+
+  // Reveal on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
