@@ -21,301 +21,124 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off); color: var(--dark); overflow-x: hidden; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--off);
-    color: var(--dark);
-    overflow-x: hidden;
-  }
+  #progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--accent)); width: 0%; z-index: 999; transition: width 0.1s linear; }
 
-  /* ── SCROLL PROGRESS ── */
-  #progress {
-    position: fixed; top: 0; left: 0; height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--accent));
-    width: 0%; z-index: 999; transition: width 0.1s linear;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px; height: 60px;
-    background: rgba(13,33,55,0.96);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201,168,76,0.2);
-  }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px; font-weight: 700;
-    color: var(--white); letter-spacing: 0.02em;
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 60px; background: rgba(13,33,55,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,0.2); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: 0.02em; }
   .nav-logo span { color: var(--gold); }
   .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; color: rgba(255,255,255,0.7);
-    text-decoration: none; transition: color 0.2s;
-  }
+  .nav-links a { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--gold); }
-  .nav-dl {
-    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
-    text-transform: uppercase; padding: 8px 20px;
-    border: 1px solid var(--gold); color: var(--gold);
-    text-decoration: none; border-radius: 2px;
-    transition: all 0.2s;
-  }
+  .nav-dl { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; border-radius: 2px; transition: all 0.2s; }
   .nav-dl:hover { background: var(--gold); color: var(--navy); }
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: var(--navy);
-    display: flex; align-items: center;
-    position: relative; overflow: hidden;
-    padding: 100px 0 80px;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(26,82,118,0.5) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.08) 0%, transparent 50%);
-  }
-  .hero-grid {
-    position: absolute; inset: 0; opacity: 0.04;
-    background-image:
-      linear-gradient(var(--gold) 1px, transparent 1px),
-      linear-gradient(90deg, var(--gold) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  .hero-inner {
-    position: relative; z-index: 2;
-    max-width: 1100px; margin: 0 auto; padding: 0 48px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-  }
-  .hero-eyebrow {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
-  }
-  .hero-eyebrow::before {
-    content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(38px, 5vw, 58px); font-weight: 700; line-height: 1.1;
-    color: var(--white); margin-bottom: 10px;
-  }
+  .hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; position: relative; overflow: hidden; padding: 100px 0 80px; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(26,82,118,0.5) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.08) 0%, transparent 50%); }
+  .hero-grid { position: absolute; inset: 0; opacity: 0.04; background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px); background-size: 60px 60px; }
+  .hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 5vw, 58px); font-weight: 700; line-height: 1.1; color: var(--white); margin-bottom: 10px; }
   .hero h1 .last { color: var(--gold); display: block; }
-  .hero-role {
-    font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.6);
-    letter-spacing: 0.04em; margin-bottom: 32px; line-height: 1.6;
-  }
+  .hero-role { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.6); letter-spacing: 0.04em; margin-bottom: 32px; line-height: 1.6; }
   .hero-contact { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
-  .hero-contact a {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 13px; color: rgba(255,255,255,0.65);
-    text-decoration: none; transition: color 0.2s;
-  }
+  .hero-contact a { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
   .hero-contact a:hover { color: var(--gold); }
-  .hero-contact .ico {
-    width: 30px; height: 30px; border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.3);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; flex-shrink: 0;
-    transition: border-color 0.2s, background 0.2s;
-  }
+  .hero-contact .ico { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; transition: border-color 0.2s, background 0.2s; }
   .hero-contact a:hover .ico { border-color: var(--gold); background: rgba(201,168,76,0.1); }
   .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn-primary {
-    padding: 13px 28px; background: var(--gold); color: var(--navy);
-    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; text-decoration: none;
-    border-radius: 2px; transition: all 0.2s; display: inline-block;
-  }
+  .btn-primary { padding: 13px 28px; background: var(--gold); color: var(--navy); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.2s; display: inline-block; }
   .btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
-  .btn-secondary {
-    padding: 13px 28px; border: 1px solid rgba(255,255,255,0.25);
-    color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
-    border-radius: 2px; transition: all 0.2s; display: inline-block;
-  }
+  .btn-secondary { padding: 13px 28px; border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.2s; display: inline-block; }
   .btn-secondary:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
 
-  /* Hero right — stats */
   .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .stat-card {
-    padding: 24px 20px;
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 4px; background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(4px);
-    opacity: 0; transform: translateY(20px);
-    animation: fadeUp 0.6s var(--ease) forwards;
-  }
+  .stat-card { padding: 24px 20px; border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; background: rgba(255,255,255,0.03); backdrop-filter: blur(4px); opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s var(--ease) forwards; }
   .stat-card:nth-child(1) { animation-delay: 0.2s; }
   .stat-card:nth-child(2) { animation-delay: 0.35s; }
   .stat-card:nth-child(3) { animation-delay: 0.5s; }
   .stat-card:nth-child(4) { animation-delay: 0.65s; }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px; font-weight: 700; color: var(--gold);
-    line-height: 1; margin-bottom: 6px;
-  }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 6px; }
   .stat-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; line-height: 1.4; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── MAIN WRAPPER ── */
   main { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
-
-  /* ── SECTION ── */
   section { padding: 80px 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
   section:last-child { border-bottom: none; }
-
-  .sec-label {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 8px; display: flex; align-items: center; gap: 10px;
-  }
+  .sec-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
   .sec-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
-  .sec-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 34px; font-weight: 600; color: var(--navy);
-    margin-bottom: 48px; line-height: 1.2;
-  }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600; color: var(--navy); margin-bottom: 48px; line-height: 1.2; }
 
-  /* ── SUMMARY ── */
-  .summary-text {
-    font-size: 16px; font-weight: 300; line-height: 1.85;
-    color: #3D3D3D; max-width: 780px;
-    border-left: 3px solid var(--gold);
-    padding-left: 28px;
-  }
+  .summary-text { font-size: 16px; font-weight: 300; line-height: 1.85; color: #3D3D3D; max-width: 780px; border-left: 3px solid var(--gold); padding-left: 28px; }
   .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
-  .tag {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
-    text-transform: uppercase; padding: 6px 14px;
-    border: 1px solid rgba(26,82,118,0.25);
-    border-radius: 2px; color: var(--accent);
-    background: rgba(26,82,118,0.04);
-  }
+  .tag { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border: 1px solid rgba(26,82,118,0.25); border-radius: 2px; color: var(--accent); background: rgba(26,82,118,0.04); }
 
-  /* ── EXPERIENCE ── */
-  .exp-item {
-    display: grid; grid-template-columns: 200px 1fr;
-    gap: 0 48px; margin-bottom: 56px; position: relative;
-  }
-  .exp-item::before {
-    content: ''; position: absolute;
-    left: 200px; top: 0; bottom: -56px; width: 1px;
-    background: linear-gradient(to bottom, var(--rule) 0%, transparent 100%);
-  }
+  .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 0 48px; margin-bottom: 56px; position: relative; }
+  .exp-item::before { content: ''; position: absolute; left: 200px; top: 0; bottom: -56px; width: 1px; background: linear-gradient(to bottom, var(--rule) 0%, transparent 100%); }
   .exp-item:last-child::before { display: none; }
-  .exp-left { padding-right: 0; padding-top: 4px; }
-  .exp-period {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; color: var(--gray);
-    letter-spacing: 0.05em; line-height: 1.6; margin-bottom: 8px;
-  }
-  .exp-company {
-    font-size: 13px; font-weight: 500; color: var(--accent);
-    margin-bottom: 4px;
-  }
+  .exp-left { padding-top: 4px; }
+  .exp-period { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray); letter-spacing: 0.05em; line-height: 1.6; margin-bottom: 8px; }
+  .exp-company { font-size: 13px; font-weight: 500; color: var(--accent); margin-bottom: 4px; }
   .exp-loc { font-size: 11px; color: var(--gray); }
   .exp-right { padding-left: 48px; }
-  .exp-role {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px; font-weight: 600; color: var(--navy);
-    margin-bottom: 4px;
-  }
-  .exp-sub {
-    font-size: 12px; color: var(--gray); margin-bottom: 20px;
-    font-style: italic;
-  }
+  .exp-role { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .exp-sub { font-size: 12px; color: var(--gray); margin-bottom: 20px; font-style: italic; }
   .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-  .exp-bullets li {
-    font-size: 13.5px; font-weight: 400; color: #3D3D3D;
-    line-height: 1.65; padding-left: 18px; position: relative;
-  }
-  .exp-bullets li::before {
-    content: '▸'; position: absolute; left: 0;
-    color: var(--gold); font-size: 10px; top: 4px;
-  }
+  .exp-bullets li { font-size: 13.5px; font-weight: 400; color: #3D3D3D; line-height: 1.65; padding-left: 18px; position: relative; }
+  .exp-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); font-size: 10px; top: 4px; }
 
-  /* ── SKILLS GRID ── */
   .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .skill-card {
-    padding: 28px 24px;
-    background: var(--white);
-    border: 1px solid rgba(0,0,0,0.07);
-    border-top: 3px solid var(--gold);
-    border-radius: 0 0 4px 4px;
-    transition: transform 0.25s var(--ease), box-shadow 0.25s;
-  }
+  .skill-card { padding: 28px 24px; background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-top: 3px solid var(--gold); border-radius: 0 0 4px 4px; transition: transform 0.25s var(--ease), box-shadow 0.25s; }
   .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-  .skill-card-title {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--navy); margin-bottom: 16px;
-  }
+  .skill-card-title { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); margin-bottom: 16px; }
   .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-  .pill {
-    font-size: 11px; padding: 4px 10px; border-radius: 2px;
-    background: rgba(13,33,55,0.06); color: var(--blue);
-    font-weight: 500;
-  }
+  .pill { font-size: 11px; padding: 4px 10px; border-radius: 2px; background: rgba(13,33,55,0.06); color: var(--blue); font-weight: 500; }
 
-  /* ── EDUCATION / CERTS ── */
   .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .edu-item {
-    padding: 28px; background: var(--white);
-    border: 1px solid rgba(0,0,0,0.07); border-radius: 4px;
-    transition: box-shadow 0.2s;
-  }
+  .edu-item { padding: 28px; background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 4px; transition: box-shadow 0.2s; }
   .edu-item:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.07); }
-  .edu-degree {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 4px;
-  }
+  .edu-degree { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
   .edu-school { font-size: 13px; color: var(--accent); margin-bottom: 4px; }
   .edu-year { font-size: 11px; color: var(--gray); font-family: 'DM Mono', monospace; }
-  .edu-badge {
-    display: inline-block; margin-top: 10px;
-    font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; padding: 4px 10px;
-    background: rgba(201,168,76,0.12); color: #9A7322; border-radius: 2px;
-  }
+  .edu-badge { display: inline-block; margin-top: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; background: rgba(201,168,76,0.12); color: #9A7322; border-radius: 2px; }
   .cert-list { display: flex; flex-direction: column; gap: 12px; }
-  .cert-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 16px 20px; background: var(--white);
-    border: 1px solid rgba(0,0,0,0.07); border-radius: 4px;
-  }
-  .cert-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--gold); flex-shrink: 0; margin-top: 5px;
-  }
+  .cert-item { display: flex; align-items: flex-start; gap: 12px; padding: 16px 20px; background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 4px; }
+  .cert-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 5px; }
   .cert-text { font-size: 13px; color: #3D3D3D; line-height: 1.5; }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy); color: rgba(255,255,255,0.5);
-    text-align: center; padding: 40px 48px;
-    font-size: 12px; letter-spacing: 0.05em;
-    border-top: 1px solid rgba(201,168,76,0.2);
-  }
+  footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 40px 48px; font-size: 12px; letter-spacing: 0.05em; border-top: 1px solid rgba(201,168,76,0.2); }
   footer strong { color: var(--gold); }
 
-  /* ── FADE-IN ON SCROLL ── */
-  .reveal {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-  }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── MOBILE ── */
+  /* ── CONTACT MODAL ── */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal-box { background: var(--navy); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 40px 36px; max-width: 420px; width: 90%; position: relative; animation: modalIn 0.3s var(--ease); }
+  @keyframes modalIn { from { opacity:0; transform: scale(0.94) translateY(10px); } to { opacity:1; transform: scale(1) translateY(0); } }
+  .modal-close { position: absolute; top: 16px; right: 18px; background: none; border: none; color: rgba(255,255,255,0.4); font-size: 22px; cursor: pointer; line-height: 1; transition: color 0.2s; }
+  .modal-close:hover { color: var(--gold); }
+  .modal-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .modal-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .modal-role { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
+  .modal-divider { height: 1px; background: rgba(201,168,76,0.2); margin-bottom: 24px; }
+  .modal-contact-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+  .modal-contact-item { display: flex; align-items: center; gap: 14px; }
+  .modal-ico { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; background: rgba(255,255,255,0.03); }
+  .modal-contact-info { display: flex; flex-direction: column; gap: 2px; }
+  .modal-contact-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .modal-contact-value { font-size: 13px; color: var(--white); text-decoration: none; transition: color 0.2s; }
+  .modal-contact-value:hover { color: var(--gold); }
+  .modal-actions { display: flex; gap: 10px; }
+  .modal-btn { flex: 1; text-align: center; padding: 11px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .modal-btn-primary { background: var(--gold); color: var(--navy); }
+  .modal-btn-primary:hover { background: var(--gold-lt); }
+  .modal-btn-outline { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); }
+  .modal-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
@@ -334,7 +157,6 @@
 
 <div id="progress"></div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">H<span>P</span></div>
   <ul class="nav-links">
@@ -343,10 +165,9 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#education">Education</a></li>
   </ul>
-  <a class="nav-dl" href="Hari_Prashanth_Resume.pdf" download>Download CV</a>
+  <a class="nav-dl" href="Hari_Prashanth_Resume (1).pdf" download>Download CV</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-inner">
@@ -354,26 +175,26 @@
       <div class="hero-eyebrow">Finance Professional</div>
       <h1>P. Hari <span class="last">Prashanth</span></h1>
       <p class="hero-role">
-        Lead Accounts &amp; Finance · Corporate Finance Specialist<br>
-        8+ Years · Chennai, Tamil Nadu
+        Lead Accounts &amp; Finance &middot; Corporate Finance Specialist<br>
+        8+ Years &middot; Chennai, Tamil Nadu
       </p>
       <div class="hero-contact">
         <a href="tel:+919500187747">
-          <span class="ico">📞</span> +91 9500187747
+          <span class="ico">&#128222;</span> +91 9500187747
         </a>
         <a href="mailto:prashanthcut77@gmail.com">
-          <span class="ico">✉️</span> prashanthcut77@gmail.com
+          <span class="ico">&#9993;</span> prashanthcut77@gmail.com
         </a>
         <a href="https://linkedin.com/in/hariprashanth-finance" target="_blank">
-          <span class="ico">🔗</span> linkedin.com/in/hariprashanth-finance
+          <span class="ico">&#128279;</span> linkedin.com/in/hariprashanth-finance
         </a>
         <a href="https://haricruise.github.io/hariprashanthportfolio/" target="_blank">
-          <span class="ico">🌐</span> haricruise.github.io/hariprashanthportfolio
+          <span class="ico">&#127760;</span> haricruise.github.io/hariprashanthportfolio
         </a>
       </div>
       <div class="hero-btns">
-        <a class="btn-primary" href="Hari_Prashanth_Resume.pdf" download>Download Resume</a>
-        <a class="btn-secondary" href="mailto:prashanthcut77@gmail.com">Contact Me</a>
+        <a class="btn-primary" href="Hari_Prashanth_Resume (1).pdf" download>Download Resume</a>
+        <button class="btn-secondary" onclick="openContact()">Contact Me</button>
       </div>
     </div>
     <div class="hero-stats">
@@ -386,7 +207,7 @@
         <div class="stat-label">Companies Across Sectors</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">250+</div>
+        <div class="stat-num">100+</div>
         <div class="stat-label">Employees Payroll Managed</div>
       </div>
       <div class="stat-card">
@@ -399,13 +220,12 @@
 
 <main>
 
-  <!-- SUMMARY -->
   <section id="summary" class="reveal">
     <div class="sec-label">About Me</div>
     <h2 class="sec-title">Professional Summary</h2>
     <p class="summary-text">
       Finance professional with <strong>8+ years of progressive experience</strong> across accounting, taxation,
-      compliance, and financial reporting — spanning tech startups, real estate, and financial consulting
+      compliance, and financial reporting &mdash; spanning tech startups, real estate, and financial consulting
       sectors in Chennai. Proven track record managing end-to-end finance functions including GST/TDS
       compliance, payroll processing, FP&amp;A, MIS reporting, budgeting &amp; forecasting, and audit coordination.
       Experienced in <strong>Indian GAAP, US GAAP alignment</strong>, ERP automation, and team leadership.
@@ -427,46 +247,43 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
   <section id="experience">
     <div class="sec-label">Career History</div>
     <h2 class="sec-title">Professional Experience</h2>
 
-    <!-- Zocket -->
     <div class="exp-item reveal">
       <div class="exp-left">
-        <div class="exp-period">Jan 2025 – Mar 2026<br>May 2022 – Dec 2024</div>
+        <div class="exp-period">Jan 2025 &ndash; Mar 2025<br>May 2022 &ndash; Dec 2024</div>
         <div class="exp-company">Zocket Technologies Pvt Ltd</div>
         <div class="exp-loc">Chennai</div>
       </div>
       <div class="exp-right">
-        <div class="exp-role">Lead – Accounts &amp; Finance</div>
-        <div class="exp-sub">Previously: Senior Accounts &amp; Finance (May 2022 – Mar 2026)</div>
+        <div class="exp-role">Lead &ndash; Accounts &amp; Finance</div>
+        <div class="exp-sub">Previously: Senior Accounts &amp; Finance (May 2022 &ndash; Dec 2024)</div>
         <ul class="exp-bullets">
-          <li>Managed end-to-end GST compliance — GSTR-1, GSTR-3B, GSTR-9, GSTR-2A reconciliation — maintaining a <strong>zero-default filing</strong> track record</li>
+          <li>Managed end-to-end GST compliance &mdash; GSTR-1, GSTR-3B, GSTR-9, GSTR-2A reconciliation &mdash; maintaining a <strong>zero-default filing</strong> track record</li>
           <li>Handled complete TDS lifecycle: monthly calculations, deductions, payments &amp; return filings (Form 24Q, 26Q) per Income Tax Act</li>
           <li>Processed full-cycle payroll for <strong>100+ employees</strong> including salary structuring, PF, ESIC, PT deductions, reimbursements &amp; Form 16</li>
           <li>Prepared monthly MIS reports, financial dashboards &amp; variance analysis reports for C-suite and executive decision-making</li>
           <li>Led annual budgeting and quarterly forecasting; tracked budget vs. actuals and reported variances with corrective action plans</li>
           <li>Maintained books of accounts under <strong>Indian GAAP</strong>; supported US GAAP alignment for international finance reporting requirements</li>
-          <li>Performed <strong>Financial Planning &amp; Analysis (FP&amp;A)</strong> — revenue forecasting, cost analysis, profitability tracking &amp; scenario modelling</li>
+          <li>Performed <strong>Financial Planning &amp; Analysis (FP&amp;A)</strong> &mdash; revenue forecasting, cost analysis, profitability tracking &amp; scenario modelling</li>
           <li>Coordinated internal &amp; external audits end-to-end; prepared audit schedules and finalised books for statutory &amp; tax compliance</li>
           <li>Managed accounts payable &amp; receivable; monitored aging reports to ensure healthy cash flow and timely vendor settlements</li>
-          <li>Championed ERP &amp; automation initiatives across Tally ERP 9 &amp; Prime, Zoho Books, and Concur — reducing manual effort significantly</li>
+          <li>Championed ERP &amp; automation initiatives across Tally ERP 9 &amp; Prime, Zoho Books, and Concur &mdash; reducing manual effort significantly</li>
           <li>Supervised and mentored accounts team; delegated tasks and ensured timely monthly financial closure</li>
         </ul>
       </div>
     </div>
 
-    <!-- Bharathi Homes -->
     <div class="exp-item reveal">
       <div class="exp-left">
-        <div class="exp-period">Mar 2021 – Mar 2022</div>
+        <div class="exp-period">Mar 2021 &ndash; Mar 2022</div>
         <div class="exp-company">Bharathi Homes &amp; Realtors Pvt Ltd</div>
         <div class="exp-loc">Chennai</div>
       </div>
       <div class="exp-right">
-        <div class="exp-role">Executive – Accounts</div>
+        <div class="exp-role">Executive &ndash; Accounts</div>
         <ul class="exp-bullets">
           <li>Managed complete bookkeeping, payroll, and statutory filings (ESI, PF, GST, TDS) for a real estate company</li>
           <li>Prepared monthly and annual financial reports; supported budgeting and cash flow planning processes</li>
@@ -475,10 +292,9 @@
       </div>
     </div>
 
-    <!-- Rajeswari -->
     <div class="exp-item reveal">
       <div class="exp-left">
-        <div class="exp-period">Nov 2018 – Feb 2021</div>
+        <div class="exp-period">Nov 2018 &ndash; Feb 2021</div>
         <div class="exp-company">Rajeswari Financial Consultants</div>
         <div class="exp-loc">Adyar, Chennai</div>
       </div>
@@ -491,10 +307,9 @@
       </div>
     </div>
 
-    <!-- Suresh -->
     <div class="exp-item reveal">
       <div class="exp-left">
-        <div class="exp-period">May 2018 – Oct 2018</div>
+        <div class="exp-period">May 2018 &ndash; Oct 2018</div>
         <div class="exp-company">Suresh Tax Consultancy</div>
         <div class="exp-loc">Chennai</div>
       </div>
@@ -507,7 +322,6 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills" class="reveal">
     <div class="sec-label">Expertise</div>
     <h2 class="sec-title">Core Competencies</h2>
@@ -577,26 +391,25 @@
     </div>
   </section>
 
-  <!-- EDUCATION -->
   <section id="education" class="reveal">
     <div class="sec-label">Qualifications</div>
     <h2 class="sec-title">Education &amp; Certifications</h2>
     <div class="edu-grid" style="margin-bottom:40px">
       <div class="edu-item">
-        <div class="edu-degree">CMA (Inter) – ICMAI</div>
+        <div class="edu-degree">CMA (Inter) &ndash; ICMAI</div>
         <div class="edu-school">Institute of Cost Accountants of India</div>
-        <div class="edu-year">December 2022 — Present</div>
+        <div class="edu-year">December 2022 &mdash; Present</div>
         <span class="edu-badge">Currently Pursuing</span>
       </div>
       <div class="edu-item">
-        <div class="edu-degree">MBA – Finance</div>
+        <div class="edu-degree">MBA &ndash; Finance</div>
         <div class="edu-school">Annamalai University</div>
-        <div class="edu-year">2020 – 2022</div>
+        <div class="edu-year">2020 &ndash; 2022</div>
       </div>
       <div class="edu-item">
-        <div class="edu-degree">B.Com – Accounting &amp; Finance</div>
+        <div class="edu-degree">B.Com &ndash; Accounting &amp; Finance</div>
         <div class="edu-school">D.G. Vaishnav College, Chennai</div>
-        <div class="edu-year">2015 – 2018</div>
+        <div class="edu-year">2015 &ndash; 2018</div>
       </div>
       <div class="edu-item">
         <div class="edu-degree">Higher Secondary (HSC)</div>
@@ -604,11 +417,10 @@
         <div class="edu-year">2015</div>
       </div>
     </div>
-
     <div class="sec-label" style="margin-bottom:24px">Certifications</div>
     <div class="cert-list">
-      <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">Microsoft Office Intermediate Program — Word, Excel &amp; PowerPoint</div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">SAP Finance &amp; Controlling (FI-CO) — Power Users Course</div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">Microsoft Office Intermediate Program &mdash; Word, Excel &amp; PowerPoint</div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">SAP Finance &amp; Controlling (FI-CO) &mdash; Power Users Course</div></div>
       <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">E-Filing: Income Tax, GST &amp; TDS Registration</div></div>
       <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">Registration of ESIC, EPFO &amp; Digital Signature Certificate (DSC)</div></div>
     </div>
@@ -616,28 +428,82 @@
 
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <strong>P. Hari Prashanth</strong> &nbsp;·&nbsp;
-  +91 9500187747 &nbsp;·&nbsp;
-  prashanthcut77@gmail.com &nbsp;·&nbsp;
+  <strong>P. Hari Prashanth</strong> &nbsp;&middot;&nbsp;
+  +91 9500187747 &nbsp;&middot;&nbsp;
+  prashanthcut77@gmail.com &nbsp;&middot;&nbsp;
   Chennai, Tamil Nadu, India<br><br>
   &copy; 2025 P. Hari Prashanth. Built for GitHub Pages.
 </footer>
 
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal" onclick="handleOverlayClick(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeContact()">&times;</button>
+    <div class="modal-eyebrow">Get In Touch</div>
+    <div class="modal-name">P. Hari Prashanth</div>
+    <div class="modal-role">Lead Accounts &amp; Finance &middot; Corporate Finance Professional</div>
+    <div class="modal-divider"></div>
+    <div class="modal-contact-list">
+      <div class="modal-contact-item">
+        <div class="modal-ico">&#128222;</div>
+        <div class="modal-contact-info">
+          <span class="modal-contact-label">Phone</span>
+          <a class="modal-contact-value" href="tel:+919500187747">+91 9500187747</a>
+        </div>
+      </div>
+      <div class="modal-contact-item">
+        <div class="modal-ico">&#9993;</div>
+        <div class="modal-contact-info">
+          <span class="modal-contact-label">Email</span>
+          <a class="modal-contact-value" href="mailto:prashanthcut77@gmail.com">prashanthcut77@gmail.com</a>
+        </div>
+      </div>
+      <div class="modal-contact-item">
+        <div class="modal-ico">&#128279;</div>
+        <div class="modal-contact-info">
+          <span class="modal-contact-label">LinkedIn</span>
+          <a class="modal-contact-value" href="https://linkedin.com/in/hariprashanth-finance" target="_blank">linkedin.com/in/hariprashanth-finance</a>
+        </div>
+      </div>
+      <div class="modal-contact-item">
+        <div class="modal-ico">&#127760;</div>
+        <div class="modal-contact-info">
+          <span class="modal-contact-label">Portfolio</span>
+          <a class="modal-contact-value" href="https://haricruise.github.io/hariprashanthportfolio/" target="_blank">haricruise.github.io/hariprashanthportfolio</a>
+        </div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <a class="modal-btn modal-btn-primary" href="mailto:prashanthcut77@gmail.com">Send Email</a>
+      <a class="modal-btn modal-btn-outline" href="https://linkedin.com/in/hariprashanth-finance" target="_blank">LinkedIn Profile</a>
+    </div>
+  </div>
+</div>
+
 <script>
-  // Scroll progress bar
   window.addEventListener('scroll', () => {
     const h = document.documentElement;
     const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
     document.getElementById('progress').style.width = pct + '%';
   });
-
-  // Reveal on scroll
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  function openContact() {
+    document.getElementById('contactModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeContact() {
+    document.getElementById('contactModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('contactModal')) closeContact();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeContact(); });
 </script>
 </body>
 </html>
